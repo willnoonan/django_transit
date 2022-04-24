@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -31,12 +32,17 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    # My apps
+    'main',
+    'map',
+
+    # Django default apps
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
+    'django.contrib.staticfiles',  # for javascript, others
 ]
 
 MIDDLEWARE = [
@@ -111,10 +117,17 @@ USE_I18N = True
 
 USE_TZ = True
 
+# GOOGLE API KEY GOES HERE:
+GOOGLE_API_KEY = ""
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
+STATICFILES_DIRS = [
+    # todo I plan on adding locations to add static files (javascript, css, etc.)
+    # os.path.join(BASE_DIR, 'map', 'static')
+    # os.path.join(BASE_DIR, 'static'),
+]
 STATIC_URL = 'static/'
 
 # Default primary key field type
