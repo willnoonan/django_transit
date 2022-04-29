@@ -123,12 +123,12 @@ GOOGLE_API_KEY = ""
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATICFILES_DIRS = [
-    # todo I plan on adding locations to add static files (javascript, css, etc.)
-    # os.path.join(BASE_DIR, 'map', 'static')
-    # os.path.join(BASE_DIR, 'static'),
-]
-STATIC_URL = 'static/'
+# STATICFILES_DIRS = [
+    # this is not needed for app-level static files because they are automatically included if
+    # the STATIC_URL var is defined in this file (and set to 'static/')
+# ]
+
+STATIC_URL = 'static/'  # automatically gets app-level static files (format: myapp/static/myapp/myscript.js)
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
