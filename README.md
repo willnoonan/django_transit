@@ -1,12 +1,13 @@
 # Django Smart Map Project
 
 ### Installation
-1. Download PyCharm
-2. Fork this project from PyCharm
-3. Open a terminal in PyCharm and execute the following
+1. Download PyCharm Professional Edition
+2. Get educational license: https://www.jetbrains.com/community/education/#students
+3. Clone this repository in PyCharm (I'd prefer that you fork it using your GitHub account)
+6. Open a terminal in PyCharm and execute the following
    1. pip install django
    2. pip install python-socketio
-4. (Optional) insert Google API key near bottom of django_transit/settings.py
+7. (Optional) insert Google API key near bottom of django_transit/settings.py
 
 ### Run the Server
 In a PyCharm terminal execute the following
