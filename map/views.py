@@ -1,9 +1,16 @@
-from django.shortcuts import render
+from django.http import JsonResponse
+from django.shortcuts import render, HttpResponse
 from django.conf import settings
+
+import socketio
+sio = socketio.Server(async_mode='threading')
+
 
 # Create your views here.
 
-
+"""
+Google Map
+"""
 def map_hello_world(request):
     """
     Renders a page with embedded Google map. Passes variables to the associated html template via dictionary
@@ -16,3 +23,39 @@ def map_hello_world(request):
         "lng_coord": -98.4836,
     }
     return render(request, 'map/map.html', context)
+
+
+"""
+AJAX testing.
+"""
+def ajax_view(request):
+    return render(request, 'map/ajax_test_1.html')
+
+
+def ajax_background_request_handler(request):
+    """
+    Handles ajax requests sent in background while user is on webpage rendered by ajax_view.
+    :param request:
+    :return:
+    """
+    if request.method == 'GET':
+        data_attribute = request.GET.get('some_attribute')
+        return HttpResponse(f"The number sent to the server via AJAX is: {data_attribute}")
+    else:
+        return HttpResponse("Not a GET")
+
+
+"""
+Socket testing.
+"""
+votes = {"yes": 0, "no": 0, "maybe": 0}
+
+
+def socket_view(request):
+    return render(request, 'map/sockettest.html', {"votes": votes})
+
+
+@sio.event
+def submit_vote(sid, data):
+    votes[data] += 1
+    sio.emit("vote totals", votes)

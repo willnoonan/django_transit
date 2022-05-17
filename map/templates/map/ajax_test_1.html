@@ -1,0 +1,44 @@
+{% extends "main/base.html" %}
+{% load static %}
+
+{% block extend_head %}
+
+{% endblock %}
+
+
+{% block content %}
+
+    <div class="container">
+        <h4>AJAX test:</h4>
+        <div id="add-html-here">
+            <!-- This is where we want to render new html -->
+        </div>
+    </div>
+    <div class="container">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+        <script type="text/javascript">
+            let target_element = $('#add-html-here');
+            $.ajax({
+                url: "{% url 'map:ajax-hidden' %}",
+                //headers: {'X-CSRFToken': csrftoken},
+                data: {'some_attribute': 4567 },
+                type: "GET",
+                //dataType: 'json',
+                dataType: 'html',
+                success: function (data) {
+                    if (data) {
+                        console.log("HELLLO");
+                        // call function to do something with data
+                        target_element.html(data);
+                    } else {
+                        console.log("FAILUREEEE");
+                    }
+                }
+            });
+
+        </script>
+
+
+    </div>
+
+{% endblock %}

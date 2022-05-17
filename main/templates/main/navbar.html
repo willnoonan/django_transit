@@ -10,7 +10,10 @@ aria-expanded="false" aria-label="Toggle navigation">
                 <a class="nav-link" href="{% url 'map:map'%}">Map</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="">NavLink2</a>
+                <a class="nav-link" href="{% url 'map:ajax-page' %}">AJAX Test</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'map:socket-page' %}">Socket Test</a>
             </li>
         </ul>
     </div>

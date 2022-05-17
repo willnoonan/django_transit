@@ -1,0 +1,52 @@
+{% extends "main/base.html" %}
+{% load static %}
+
+{% block extend_head %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.4/socket.io.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" charset="utf-8">
+        document.addEventListener('DOMContentLoaded', () => {
+            // Connect to websocket
+            var socket = io.connect(location.protocol + '//' + document.domain + ':' + location.port);
+
+            // When connected, configure buttons
+            socket.on('connect', () => {
+                // Each button should emit a "submit vote" event
+                document.querySelectorAll('button').forEach(button => {
+                    button.onclick = () => {
+                        const selection = button.dataset.vote;
+                        socket.emit('submit_vote', selection);
+                    };
+                });
+            });
+
+            socket.on('vote totals', data => {
+                document.querySelector('#yes').innerHTML = data.yes;
+                document.querySelector('#no').innerHTML = data.no;
+                document.querySelector('#maybe').innerHTML = data.maybe;
+            });
+
+        });
+
+    </script>
+
+{% endblock %}
+
+
+{% block content %}
+    <div class="container">
+        <h6>
+            Open current URL in another window (even in a different browser) and you will see that the votes are
+            immediately broadcast to every window.
+        </h6>
+        <br>
+        <div>Yes Votes: <span id="yes">{{ votes.yes }}</span></div>
+        <div>No Votes: <span id="no">{{ votes.no }}</span></div>
+        <div>Maybe Votes: <span id="maybe">{{ votes.maybe }}</span></div>
+        <br>
+        <button data-vote="yes">Yes</button>
+        <button data-vote="no">No</button>
+        <button data-vote="maybe">Maybe</button>
+
+    </div>
+
+{% endblock %}
