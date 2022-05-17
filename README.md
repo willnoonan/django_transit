@@ -13,6 +13,8 @@ In a PyCharm terminal execute the following
 <li>python manage.py runserver
 
 ### Debugging
+(The following images don't appear on GitHub, but they will in PyCharm)
+<br><br>
 Click 'Add Configuration...' at top of PyCharm window.
 
 ![alt-text](readme-guide-images/Screen Shot 2022-05-16 at 11.01.11 AM.png "optional-title")
