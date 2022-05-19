@@ -1,20 +1,18 @@
-<nav class="navbar navbar-expand-md navbar-light bg-light mb-4 border">
+
+
+<nav class="navbar navbar-expand-lg bg-light">
+  <div class="container-fluid">
     <a class="navbar-brand" href="/">Home</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse"
-data-target="#navbarCollapse" aria-controls="navbarCollapse"
-aria-expanded="false" aria-label="Toggle navigation">
-<span class="navbar-toggler-icon"></span></button>
-    <div class="collapse navbar-collapse" id="navbarCollapse">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'map:map'%}">Map</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'map:ajax-page' %}">AJAX Test</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'map:socket-page' %}">Socket Test</a>
-            </li>
-        </ul>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link" href="{% url 'map:map'%}">Map</a>
+        <a class="nav-link" href="{% url 'map:ajax-page' %}">AJAX Test</a>
+        <a class="nav-link" href="{% url 'map:socket-page' %}">Socket Test</a>
+        <a class="nav-link" href="{% url 'map:location-page' %}">Location Test</a>
+      </div>
     </div>
+  </div>
 </nav>
