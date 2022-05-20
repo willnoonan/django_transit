@@ -3,17 +3,19 @@
 
 {% block extend_head %}
 
+    {% csrf_token %}
     <script type="text/javascript" charset="utf-8">
 
         document.addEventListener('DOMContentLoaded', () => {
 
+            const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
             let target_element = document.querySelector('#add-html-here');
 
             jQuery.ajax({
                 url: "{% url 'map:ajax-hidden' %}",
-                //headers: {'X-CSRFToken': csrftoken},
+                headers: {'X-CSRFToken': csrftoken},
                 data: {'some_attribute': 4567 },
-                type: "GET",
+                type: "POST",
                 //dataType: 'json',
                 dataType: 'html',
                 success: callbackFunc,
