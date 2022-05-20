@@ -7,9 +7,9 @@
 
         document.addEventListener('DOMContentLoaded', () => {
 
-            let target_element = $('#add-html-here');
+            let target_element = document.querySelector('#add-html-here');
 
-            $.ajax({
+            jQuery.ajax({
                 url: "{% url 'map:ajax-hidden' %}",
                 //headers: {'X-CSRFToken': csrftoken},
                 data: {'some_attribute': 4567 },
@@ -23,7 +23,7 @@
                 if (data) {
                     console.log("SUCCESS!");
                     // call function to do something with data
-                    target_element.html(data);
+                    target_element.innerHTML = data;
                 } else {
                     console.log("FAILURE!");
                 }
