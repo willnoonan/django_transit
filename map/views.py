@@ -40,9 +40,14 @@ def ajax_background_request_handler(request):
     """
     if request.method == 'GET':
         data_attribute = request.GET.get('some_attribute')
-        return HttpResponse(f"The number sent to the server via AJAX is: {data_attribute}")
+        return HttpResponse(f"The number sent to the server via AJAX (GET) is: {data_attribute}")
+    elif request.method == 'POST':
+        data_attribute = request.POST.get('some_attribute')
+        return HttpResponse(f"The number sent to the server via AJAX (POST) is: {data_attribute}")
     else:
-        return HttpResponse("Not a GET")
+        return HttpResponse("Error: Didn't receive data.")
+
+
 
 
 """
@@ -59,3 +64,10 @@ def socket_view(request):
 def submit_vote(sid, data):
     votes[data] += 1
     sio.emit("vote totals", votes)
+
+
+"""
+Location testing.
+"""
+def location_view(request):
+    return render(request, 'map/location_test_3.html')
