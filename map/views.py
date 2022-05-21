@@ -48,16 +48,33 @@ def ajax_background_request_handler(request):
         return HttpResponse("Error: Didn't receive data.")
 
 
+# Location AJAX Testing
+def location_view(request):
+    return render(request, 'map/location_ajax_test.html')
+
+def location_test_ajax_handler(request):
+    """
+    Handles ajax requests sent in background while user is on webpage rendered by ajax_view.
+    :param request:
+    :return:
+    """
+    if request.method == 'GET':
+        user_lat = request.GET.get('user_lat')
+        user_lng = request.GET.get('user_lng')
+        return HttpResponse(f"The user's latitude is {user_lat}, longitude is {user_lng}")
+    else:
+        return HttpResponse("Error: Didn't receive data.")
 
 
 """
 Socket testing.
 """
 votes = {"yes": 0, "no": 0, "maybe": 0}
+user_location = {"user_lat": "nothing yet", "user_lng": "nothing yet"}
 
-
+# Basic socket testing
 def socket_view(request):
-    return render(request, 'map/sockettest.html', {"votes": votes})
+    return render(request, 'map/sockettest.html', {"votes": votes, "user_location": user_location})
 
 
 @sio.event
@@ -66,8 +83,15 @@ def submit_vote(sid, data):
     sio.emit("vote totals", votes)
 
 
-"""
-Location testing.
-"""
-def location_view(request):
-    return render(request, 'map/location_test_3.html')
+
+# Socket testing with user location
+def location_socket_view(request):
+    return render(request, 'map/location_sockettest.html', {"user_location": user_location})
+
+
+@sio.event
+def broadcast_location(sid, data):
+    # Update dictionary
+    user_location["user_lat"] = data.get('user_lat')
+    user_location["user_lng"] = data.get('user_lng')
+    sio.emit("display location", user_location)
