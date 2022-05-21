@@ -16,8 +16,8 @@
                 headers: {'X-CSRFToken': csrftoken},
                 data: {'some_attribute': 4567 },
                 type: "POST",
-                //dataType: 'json',
-                dataType: 'html',
+                //dataType: 'json', // dataType specifies the type of data expected back from the server,
+                dataType: 'html',  // in this example HTML data is sent back via HttpResponse in views.py
                 success: callbackFunc,
             });
 
