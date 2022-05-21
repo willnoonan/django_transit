@@ -14,7 +14,8 @@
                 document.querySelectorAll('button').forEach(button => {
                     button.onclick = () => {
                         const selection = button.dataset.vote;
-                        socket.emit('submit_vote', selection);
+                        socket.emit('submit_vote', selection); // submit_vote is the server-side socket event handler
+                        // function defined in map/views.py
                     };
                 });
             });
