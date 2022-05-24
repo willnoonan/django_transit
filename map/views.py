@@ -22,7 +22,7 @@ def map_hello_world(request):
         "lat_coord": 29.4190,
         "lng_coord": -98.4836,
     }
-    return render(request, 'map/map.html', context)
+    return render(request, 'map/map_index.html', context)
 
 
 """
