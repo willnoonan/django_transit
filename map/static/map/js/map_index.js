@@ -1,9 +1,17 @@
+
 var map;
 function initMap() {
-    // latitude and longitude vars are defined in map.html, so that
-    // the vars from the view function can be used
+    // marker_coords is defined in map_index.html using values passed in via django template engine
+
     map = new google.maps.Map(document.getElementById('map'), {
-      center: {lat: latitude, lng: longitude },
-      zoom: 10
+        zoom: 12,
+        center: marker_coords
+    });
+
+    const marker = new google.maps.Marker({
+        position: marker_coords,
+        map: map,
     });
 }
+
+window.initMap = initMap;
