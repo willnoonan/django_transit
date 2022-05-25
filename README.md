@@ -4,11 +4,12 @@
 ### Installation
 1. Download PyCharm Professional Edition
 2. Get educational license: https://www.jetbrains.com/community/education/#students
-3. Clone this repository in PyCharm (I'd prefer that you fork it using your GitHub account)
-6. Open a terminal in PyCharm and execute the following
+3. I recommend installing Miniconda as your Python interpreter: https://docs.conda.io/projects/continuumio-conda/en/latest/user-guide/install/index.html 
+4. Clone this repository in PyCharm and create your own branch for development
+5. Open a terminal in PyCharm and execute the following
    1. pip install django
    2. pip install python-socketio
-7. (Optional) insert Google API key near bottom of django_transit/settings.py
+6. (Optional) insert Google API key near bottom of django_transit/settings.py
 
 
 ### Run the Server
