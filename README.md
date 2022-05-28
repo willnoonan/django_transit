@@ -1,5 +1,7 @@
 # Django Smart Map Project
 
+Development has moved to a private repository.
+
 ---
 ### Installation
 1. Download PyCharm Professional Edition
